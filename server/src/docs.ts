@@ -3,8 +3,8 @@ import swaggerAutogen from "swagger-autogen";
 const options = {
     openapi: "3.1.0",
     info: {
-        title: 'API Odin',
-        description: 'API para controle do laboratório'
+        title: 'Aula de API',
+        description: 'Aula de conceitos básicos de API',
       },
       servers:[
         {
@@ -12,7 +12,7 @@ const options = {
             description: "Development server"
         },
         {
-            url:"https://api-admin-teste.bymycell.com",
+            url:"https://site.oficial.com",
             description: "Production server"
         }
     ],
