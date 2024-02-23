@@ -131,6 +131,27 @@ export class UserController {
         return res.status(401).json({ error: "Usuario ou senha invalidos" });
     }
 
+    static async html(req: Request, res: Response){
+        console.log("Entoru")
+        try{
+            const users = await prisma.user.findMany()
+            let html = "<html><header><title>Lista de usuarios</title></header><body>"
+            html+= "<h1>Lista de usuarios</h1>"
+            users.forEach(user => {
+                html+= "<p>Nome: <b>"+user.name+"</b></p>";
+                html += "<li>Id: "+user.id+"</li>"
+                html += "<li>Email: "+user.email+"</li>"
+                html += "</br>"
+            })
+            html += "</body></html>"
+            return res.status(200).send(html);
+
+        }catch(err){
+            console.log(err)
+            return res.status(501).json({ error: "Erro inesperado" });
+        }
+    }
+
     static async admin(req: Request, res: Response) {
         const token = req.headers['authorization'];
         if(!token){
